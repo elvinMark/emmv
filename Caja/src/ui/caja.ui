@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>502</width>
+    <height>146</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Caja - EMMV</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>287</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Fecha:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateEdit" name="dateEdit">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="calendarPopup">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Cambiar Fecha</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>502</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuIngresos">
+    <property name="title">
+     <string>Ingresos</string>
+    </property>
+    <addaction name="actionEfectivo"/>
+    <addaction name="actionCheque"/>
+    <addaction name="actionVoucher"/>
+   </widget>
+   <widget class="QMenu" name="menuEgresos">
+    <property name="title">
+     <string>Egresos</string>
+    </property>
+    <addaction name="actionGastos"/>
+   </widget>
+   <widget class="QMenu" name="menuConsulta">
+    <property name="title">
+     <string>Consulta</string>
+    </property>
+    <addaction name="actionIngresos"/>
+    <addaction name="actionEgresos"/>
+   </widget>
+   <widget class="QMenu" name="menuReporte">
+    <property name="title">
+     <string>Reporte</string>
+    </property>
+    <addaction name="actionReporte_de_Caja"/>
+   </widget>
+   <widget class="QMenu" name="menuAdministrador">
+    <property name="title">
+     <string>Administrador</string>
+    </property>
+    <addaction name="actionCrear_Codigo"/>
+    <addaction name="actionLista_de_Codigos"/>
+   </widget>
+   <addaction name="menuAdministrador"/>
+   <addaction name="menuIngresos"/>
+   <addaction name="menuEgresos"/>
+   <addaction name="menuConsulta"/>
+   <addaction name="menuReporte"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionEfectivo">
+   <property name="text">
+    <string>Efectivo</string>
+   </property>
+  </action>
+  <action name="actionCheque">
+   <property name="text">
+    <string>Cheque</string>
+   </property>
+  </action>
+  <action name="actionVoucher">
+   <property name="text">
+    <string>Voucher</string>
+   </property>
+  </action>
+  <action name="actionGastos">
+   <property name="text">
+    <string>Gastos</string>
+   </property>
+  </action>
+  <action name="actionCrear_Codigo">
+   <property name="text">
+    <string>Crear Codigo</string>
+   </property>
+  </action>
+  <action name="actionLista_de_Codigos">
+   <property name="text">
+    <string>Lista de Codigos</string>
+   </property>
+  </action>
+  <action name="actionIngresos">
+   <property name="text">
+    <string>Ingresos</string>
+   </property>
+  </action>
+  <action name="actionEgresos">
+   <property name="text">
+    <string>Egresos</string>
+   </property>
+  </action>
+  <action name="actionReporte_de_Caja">
+   <property name="text">
+    <string>Reporte de Caja</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>enable_date_edit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>75</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>250</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCrear_Codigo</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>window_create_code()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>250</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCheque</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>window_input_check()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>250</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEfectivo</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>window_input_cash()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>250</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVoucher</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>window_input_ticket()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>250</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionLista_de_Codigos</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>window_list_code()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>250</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionGastos</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>window_output_expenses()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>250</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionIngresos</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>window_consult_inputs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>250</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEgresos</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>window_consult_outputs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>250</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionReporte_de_Caja</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>window_report_all()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>250</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dateEdit</sender>
+   <signal>dateChanged(QDate)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>change_system_date()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>235</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>250</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>change_system_date()</slot>
+  <slot>enable_date_edit()</slot>
+  <slot>window_create_code()</slot>
+  <slot>window_list_code()</slot>
+  <slot>window_input_cash()</slot>
+  <slot>window_input_check()</slot>
+  <slot>window_input_ticket()</slot>
+  <slot>window_output_expenses()</slot>
+  <slot>window_consult_inputs()</slot>
+  <slot>window_consult_outputs()</slot>
+  <slot>window_report_all()</slot>
+ </slots>
+</ui>
