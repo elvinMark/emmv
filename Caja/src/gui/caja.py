@@ -109,6 +109,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
+        self.setDate(MainWindow)
         self.setWindows(MainWindow)
         self.setSlots(MainWindow)
         
@@ -146,17 +147,26 @@ class Ui_MainWindow(object):
         self.actionEgresos.setText(_translate("MainWindow", "Egresos"))
         self.actionReporte_de_Caja.setText(_translate("MainWindow", "Reporte de Caja"))
 
+    def setDate(self,MainWindow):
+        self.dateEdit.setDate(MainWindow.date.to_qdate())
+        
     def setWindows(self,MainWindow):
         self.create_code = QtWidgets.QWidget()
         helper = create_code_helper()
+        helper.setDB(self.create_code,MainWindow.db)
+        helper.setDate(self.create_code,MainWindow.date)
         helper.setupUi(self.create_code)
-
+        
         self.list_code = QtWidgets.QWidget()
         helper = list_code_helper()
+        helper.setDB(self.list_code,MainWindow.db)
+        helper.setDate(self.list_code,MainWindow.date)
         helper.setupUi(self.list_code)
         
         self.enter_cash = QtWidgets.QWidget()
         helper = enter_cash_helper()
+        helper.setDB(self.enter_cash,MainWindow.db)
+        helper.setDate(self.enter_cash,MainWindow.date)
         helper.setupUi(self.enter_cash)
 
         self.enter_check = QtWidgets.QWidget()

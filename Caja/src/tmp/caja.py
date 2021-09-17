@@ -109,7 +109,7 @@ class Ui_MainWindow(object):
         self.actionIngresos.triggered.connect(MainWindow.window_consult_inputs)
         self.actionEgresos.triggered.connect(MainWindow.window_consult_outputs)
         self.actionReporte_de_Caja.triggered.connect(MainWindow.window_report_all)
-        self.dateEdit.editingFinished.connect(MainWindow.change_system_date)
+        self.dateEdit.dateChanged['QDate'].connect(MainWindow.change_system_date)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

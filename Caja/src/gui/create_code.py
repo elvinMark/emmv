@@ -50,10 +50,40 @@ class Ui_Form(object):
 
     def setDB(self,Form,db):
         Form.db = db
-        
+
+    def setDate(self,Form,date):
+        Form.date = date
+    
     def setSlots(self,Form):
         def create_new_code():
             name = self.lineEdit.text()
+            try:
+                tmp_ = Form.db.search_asset_by_name(name)
+                if len(tmp_) > 0:
+                    msg = QtWidgets.QMessageBox()
+                    msg.setWindowTitle("Error")
+                    msg.setText("El nombre ya existe en la base de datos")
+                    msg.exec()
+
+                else:
+                    try:
+                        generated_code = Form.db.insert_new_asset(name)
+                        msg = QtWidgets.QMessageBox()
+                        msg.setWindowTitle("Mensaje")
+                        msg.setText(f"Nuevo codigo creado exitosamente\ncodigo generado: {generated_code}")
+                        msg.exec()
+                    except:
+                        msg = QtWidgets.QMessageBox()
+                        msg.setWindowTitle("Error")
+                        msg.setText("Error en la base de datos")
+                        msg.exec()
             
+            except:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("Error en la base de datos")
+                msg.exec()
+                
+            self.lineEdit.setText("")
         Form.create_new_code = create_new_code
         

@@ -30,6 +30,7 @@ class Ui_Form(object):
         self.retranslateUi(Form)
 
         self.setSlots(Form)
+        Form.update_list()
         
         self.pushButton.clicked.connect(Form.update_list)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -43,8 +44,27 @@ class Ui_Form(object):
         item.setText(_translate("Form", "Nombre"))
         self.pushButton.setText(_translate("Form", "Refrescar"))
 
+    def setDB(self, Form, db):
+        Form.db = db
+
+    def setDate(self,Form, date):
+        Form.date = date
+    
     def setSlots(self,Form):
         def update_list():
-            pass
+            self.tableWidget.setRowCount(0)
+            try:
+                elems = Form.db.list_all_assets()
+                for elem in elems:
+                    idx = self.tableWidget.rowCount()
+                    self.tableWidget.insertRow(idx)
+                    self.tableWidget.setItem(idx, 0, QtWidgets.QTableWidgetItem(str(elem["code"])))
+                    self.tableWidget.setItem(idx, 1, QtWidgets.QTableWidgetItem(elem["name"]))
+            except:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("Error en la base de datos")
+                msg.exec()
+            
         Form.update_list = update_list
         
